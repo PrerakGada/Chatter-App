@@ -4,6 +4,7 @@ import 'package:chatter/pages/contacts_page.dart';
 import 'package:chatter/pages/messages_page.dart';
 import 'package:chatter/pages/notifications_page.dart';
 import 'package:chatter/theme.dart';
+import 'package:chatter/widgets/glowing_action_button.dart';
 import 'package:chatter/widgets/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -130,12 +131,22 @@ class _BottomNavigationBarState extends State<_BottomNavigationBar> {
                 label: 'Messages',
                 icon: CupertinoIcons.bubble_left_bubble_right_fill,
               ),
-              _NavigationBarItem(
-                isSelected: selectedIndex == 1,
-                onTap: handleItemSelected,
-                index: 1,
-                label: 'Notifications',
-                icon: CupertinoIcons.bell_solid,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: _NavigationBarItem(
+                  isSelected: selectedIndex == 1,
+                  onTap: handleItemSelected,
+                  index: 1,
+                  label: 'Notifications',
+                  icon: CupertinoIcons.bell_solid,
+                ),
+              ),
+              GlowingActionButton(
+                color: AppColors.secondary,
+                icon: CupertinoIcons.plus,
+                onPressed: () {
+                  const Text('TODO');
+                },
               ),
               _NavigationBarItem(
                 isSelected: selectedIndex == 2,
@@ -183,7 +194,7 @@ class _NavigationBarItem extends StatelessWidget {
         onTap(index);
       },
       child: SizedBox(
-        height: 70,
+        width: 70,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
